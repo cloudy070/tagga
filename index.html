@@ -234,6 +234,31 @@ svg{display:block}
 .photogrid .tile.sel{outline:3px solid var(--lapis);outline-offset:-3px}
 .photogrid .tile .num{position:absolute;top:7px;right:7px;width:22px;height:22px;border-radius:50%;background:var(--lapis);color:var(--on-lapis);font:800 12px/22px var(--f);text-align:center}
 
+/* reels feed */
+.reels{position:absolute;inset:0;overflow-y:auto;scroll-snap-type:y mandatory;scrollbar-width:none;overscroll-behavior:contain}
+.reels::-webkit-scrollbar{display:none}
+.reel{position:relative;height:100%;scroll-snap-align:start;scroll-snap-stop:always;overflow:hidden}
+.reel .bgtile{position:absolute;inset:0;border-radius:0;display:flex;align-items:center;justify-content:center}
+.reel .scrimT{position:absolute;left:0;right:0;top:0;height:120px;background:linear-gradient(rgba(8,8,10,.45),transparent);z-index:2;pointer-events:none}
+.reel .scrimB{position:absolute;left:0;right:0;bottom:0;height:240px;background:linear-gradient(transparent,rgba(8,8,10,.6));z-index:2;pointer-events:none}
+.reel .meta-l{position:absolute;left:14px;right:88px;bottom:96px;color:#fff;z-index:5}
+.reel .meta-l .hnd{font:800 15px var(--f);text-shadow:0 1px 8px rgba(0,0,0,.45);display:flex;align-items:center;gap:7px}
+.reel .meta-l .hnd .prm{font:600 10px var(--f);opacity:.85}
+.reel .meta-l .cap{font:500 13px/1.45 var(--f);margin-top:5px;opacity:.96;text-shadow:0 1px 8px rgba(0,0,0,.45)}
+.reel .meta-l .tchip{display:inline-flex;margin-top:9px;padding:4.5px 10px;border-radius:6px;background:rgba(255,255,255,.2);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font:600 11px var(--f);color:#fff}
+.rail-r{position:absolute;right:9px;bottom:100px;display:flex;flex-direction:column;align-items:center;gap:17px;z-index:6}
+.rail-r .rbtn{display:flex;flex-direction:column;align-items:center;gap:4px;color:#fff;font:700 11px var(--f);text-shadow:0 1px 6px rgba(0,0,0,.5);cursor:pointer}
+.rail-r .rbtn svg{width:29px;height:29px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.45))}
+.rail-r .rbtn.saved svg{fill:#fff}
+.rail-r .avw{position:relative;width:46px;height:52px;cursor:pointer;display:block}
+.rail-r .avw .av{display:block;width:46px;height:46px;border:2px solid #fff}
+.rail-r .avw .fplus{position:absolute;left:50%;bottom:0;transform:translateX(-50%);width:19px;height:19px;border-radius:50%;background:var(--lapis);color:#fff;display:flex;align-items:center;justify-content:center;font:800 13px/19px var(--f)}
+.feedtop{position:absolute;top:0;left:0;right:0;z-index:8;display:flex;align-items:center;justify-content:center;gap:18px;padding:max(14px,env(safe-area-inset-top)) 16px 8px;color:#fff}
+.fpill{font:700 14.5px var(--f);opacity:.72;text-shadow:0 1px 6px rgba(0,0,0,.4);cursor:pointer;padding-bottom:3px}
+.fpill.on{opacity:1;border-bottom:2.5px solid #fff}
+.feedtop .fbell{position:absolute;right:14px;top:max(10px,env(safe-area-inset-top));color:#fff}
+.feedtop .fbell svg{width:23px;height:23px;filter:drop-shadow(0 1px 5px rgba(0,0,0,.4))}
+
 /* misc */
 .hairline{height:1px;background:var(--hairline);margin:12px 16px}
 .note-line{font:500 11px/1.5 var(--f);color:var(--faint);text-align:center;padding:8px 24px}
@@ -277,17 +302,17 @@ svg{display:block}
 <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 13.5A8 8 0 0 1 10.5 4 8 8 0 1 0 20 13.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></symbol>
 <symbol id="i-tag" viewBox="0 0 24 24"><path d="M3 3.8A.8.8 0 0 1 3.8 3h7.6a2 2 0 0 1 1.4.6l7.6 7.6a2 2 0 0 1 0 2.8l-6 6a2 2 0 0 1-2.8 0l-7.6-7.6a2 2 0 0 1-.6-1.4V3.8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="7.6" cy="7.6" r="1.7" fill="currentColor"/></symbol>
 <symbol id="i-tag-f" viewBox="0 0 24 24"><path d="M3 3.8A.8.8 0 0 1 3.8 3h7.6a2 2 0 0 1 1.4.6l7.6 7.6a2 2 0 0 1 0 2.8l-6 6a2 2 0 0 1-2.8 0l-7.6-7.6a2 2 0 0 1-.6-1.4V3.8z" fill="currentColor"/><circle cx="7.6" cy="7.6" r="1.9" fill="var(--bg,#fff)"/></symbol>
-<symbol id="g-hanger" viewBox="0 0 64 64"><path d="M32 26v-3.2c0-2 1.2-3 2.7-4a6 6 0 1 0-8.7-5.3" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M32 26 7.5 42.2c-1.9 1.3-1 4.3 1.3 4.3h46.4c2.3 0 3.2-3 1.3-4.3L32 26z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></symbol>
-<symbol id="g-tote" viewBox="0 0 64 64"><path d="M15 25h34l-3.5 27h-27L15 25z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M24.5 25v-5.5a7.5 7.5 0 0 1 15 0V25" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M21 33h22" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
-<symbol id="g-shades" viewBox="0 0 64 64"><circle cx="21" cy="35" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/><circle cx="43" cy="35" r="8.5" fill="none" stroke="currentColor" stroke-width="2.6"/><path d="M29.5 33.5c1.6-2 3.4-2 5 0M12.5 32.5 8 29.5M51.5 32.5l4.5-3" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
-<symbol id="g-tee" viewBox="0 0 64 64"><path d="M24 14l-13 7 5 9 6-3.4V50h20V26.6l6 3.4 5-9-13-7a8.5 5.5 0 0 1-16 0z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/></symbol>
-<symbol id="g-dress" viewBox="0 0 64 64"><path d="M26 10h12l-1.5 7c-1 3.5-.5 5.5 2 7.5 5.5 4.5 7.5 12 9 27a42 15 0 0 1-31 0c1.5-15 3.5-22.5 9-27 2.5-2 3-4 2-7.5L26 10z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M26 25.5h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
-<symbol id="g-coat" viewBox="0 0 64 64"><path d="M26 10h12l10 7-3.5 8-4.5-2.5V52h-16V22.5L19.5 25 16 17l10-7z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M32 10l-4.5 12M32 10l4.5 12M32 24v28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/><path d="M24 36h16" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
-<symbol id="g-jeans" viewBox="0 0 64 64"><path d="M23 10h18v12l-2 30h-6.5L30 30l-2.5 22H21l-2-30 4-12z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M22 18h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
-<symbol id="g-heel" viewBox="0 0 64 64"><path d="M10 44c11 2 19-1 26-8l6-7 6 5-5 7v9h-7l-22 2c-3 .2-4-6-4-8z" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/><path d="M43 50v-7" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
-<symbol id="fig-a" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="14.5" r="8"/><path d="M50 22.5v7"/><path d="M30.5 89.5 28.5 46q3-15.5 21.5-15.5T71.5 46l-2 43.5q-19.5 5.5-39 0z"/><path d="M50 30.5 44 39.5M50 30.5l6 9"/><path d="M35.5 34.5 32.5 70M64.5 34.5l3 35.5"/><path d="M43.5 92.5 42 139M56.5 92.5 58 139"/><path d="M35 140.5c2.5-1.8 8-1.8 11 0M51.5 140.5c2.5-1.8 8-1.8 11 0"/></g></symbol>
-<symbol id="fig-b" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="47" cy="15" r="8.2"/><path d="M47 23.5V29"/><path d="M37 34q10-6 20 0l-2 17q7 20 9 44-17 8-34 0 2-24 9-44l-2-17z"/><path d="M37.5 53h19"/><path d="M43 99 42 134M53 99 54 134"/><path d="M36 138.5h10.5M48.5 138.5H59"/><path d="M57 31l9 5v0"/><path d="M63 36l4 22"/><rect x="60" y="58" width="16" height="17" rx="2.5"/></g></symbol>
-<symbol id="fig-c" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="15" r="8.2"/><path d="M50 23.5V29"/><path d="M35 34q15-7 30 0l-1.5 15-6 1.5V64H42.5V50.5l-6-1.5L35 34z"/><path d="M35.6 36.5 28 51l7 3M64.4 36.5 71 51l-7 3"/><path d="M42.5 64 35 135h12l3.5-46 3.5 46h12L58.5 64"/><path d="M33 139.5h13M53 139.5h13"/></g></symbol>
+<symbol id="g-hanger" viewBox="0 0 64 64"><path d="M32 26v-3.2c0-2 1.2-3 2.7-4a6 6 0 1 0-8.7-5.3" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linecap="round"/><path d="M32 26 7.5 42.2c-1.9 1.3-1 4.3 1.3 4.3h46.4c2.3 0 3.2-3 1.3-4.3L32 26z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/></symbol>
+<symbol id="g-tote" viewBox="0 0 64 64"><path d="M15 25h34l-3.5 27h-27L15 25z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/><path d="M24.5 25v-5.5a7.5 7.5 0 0 1 15 0V25" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linecap="round"/><path d="M21 33h22" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
+<symbol id="g-shades" viewBox="0 0 64 64"><circle cx="21" cy="35" r="8.5" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)"/><circle cx="43" cy="35" r="8.5" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)"/><path d="M29.5 33.5c1.6-2 3.4-2 5 0M12.5 32.5 8 29.5M51.5 32.5l4.5-3" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linecap="round"/></symbol>
+<symbol id="g-tee" viewBox="0 0 64 64"><path d="M24 14l-13 7 5 9 6-3.4V50h20V26.6l6 3.4 5-9-13-7a8.5 5.5 0 0 1-16 0z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/></symbol>
+<symbol id="g-dress" viewBox="0 0 64 64"><path d="M26 10h12l-1.5 7c-1 3.5-.5 5.5 2 7.5 5.5 4.5 7.5 12 9 27a42 15 0 0 1-31 0c1.5-15 3.5-22.5 9-27 2.5-2 3-4 2-7.5L26 10z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/><path d="M26 25.5h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
+<symbol id="g-coat" viewBox="0 0 64 64"><path d="M26 10h12l10 7-3.5 8-4.5-2.5V52h-16V22.5L19.5 25 16 17l10-7z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/><path d="M32 10l-4.5 12M32 10l4.5 12M32 24v28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/><path d="M24 36h16" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linecap="round"/></symbol>
+<symbol id="g-jeans" viewBox="0 0 64 64"><path d="M23 10h18v12l-2 30h-6.5L30 30l-2.5 22H21l-2-30 4-12z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/><path d="M22 18h20" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity=".55"/></symbol>
+<symbol id="g-heel" viewBox="0 0 64 64"><path d="M10 44c11 2 19-1 26-8l6-7 6 5-5 7v9h-7l-22 2c-3 .2-4-6-4-8z" fill="none" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linejoin="round"/><path d="M43 50v-7" stroke="currentColor" stroke-width="var(--gsw,2.6)" stroke-linecap="round"/></symbol>
+<symbol id="fig-a" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="var(--fsw,2.4)" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="14.5" r="8"/><path d="M50 22.5v7"/><path d="M30.5 89.5 28.5 46q3-15.5 21.5-15.5T71.5 46l-2 43.5q-19.5 5.5-39 0z"/><path d="M50 30.5 44 39.5M50 30.5l6 9"/><path d="M35.5 34.5 32.5 70M64.5 34.5l3 35.5"/><path d="M43.5 92.5 42 139M56.5 92.5 58 139"/><path d="M35 140.5c2.5-1.8 8-1.8 11 0M51.5 140.5c2.5-1.8 8-1.8 11 0"/></g></symbol>
+<symbol id="fig-b" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="var(--fsw,2.4)" stroke-linecap="round" stroke-linejoin="round"><circle cx="47" cy="15" r="8.2"/><path d="M47 23.5V29"/><path d="M37 34q10-6 20 0l-2 17q7 20 9 44-17 8-34 0 2-24 9-44l-2-17z"/><path d="M37.5 53h19"/><path d="M43 99 42 134M53 99 54 134"/><path d="M36 138.5h10.5M48.5 138.5H59"/><path d="M57 31l9 5v0"/><path d="M63 36l4 22"/><rect x="60" y="58" width="16" height="17" rx="2.5"/></g></symbol>
+<symbol id="fig-c" viewBox="13 0 74 152"><g fill="none" stroke="currentColor" stroke-width="var(--fsw,2.4)" stroke-linecap="round" stroke-linejoin="round"><circle cx="50" cy="15" r="8.2"/><path d="M50 23.5V29"/><path d="M35 34q15-7 30 0l-1.5 15-6 1.5V64H42.5V50.5l-6-1.5L35 34z"/><path d="M35.6 36.5 28 51l7 3M64.4 36.5 71 51l-7 3"/><path d="M42.5 64 35 135h12l3.5-46 3.5 46h12L58.5 64"/><path d="M33 139.5h13M53 139.5h13"/></g></symbol>
 <symbol id="fig-lay" viewBox="0 0 100 160"><g stroke-linecap="round" stroke-linejoin="round"><use href="#g-coat" x="8" y="8" width="56" height="56"/><use href="#g-jeans" x="42" y="52" width="52" height="52"/><use href="#g-heel" x="6" y="72" width="46" height="46"/><use href="#g-shades" x="50" y="106" width="42" height="42"/><use href="#g-tote" x="10" y="112" width="40" height="40"/></g></symbol>
 </defs></svg>
 <!-- ============ ONBOARDING ============ -->
@@ -314,53 +339,111 @@ svg{display:block}
   </div>
 </section>
 
-<!-- ============ FEED ============ -->
+<!-- ============ FEED (fullscreen reels) ============ -->
 <section class="screen" id="s-feed">
-  <div class="hrow top-safe">
-    <span class="wordmark"><svg class="tg"><use href="#i-tag-f"/></svg>tagga</span>
-    <span style="flex:1"></span>
-    <span class="iconb" onclick="push('s-notifs')"><svg><use href="#i-bell"/></svg><span class="bdg"></span></span>
+  <div class="reels" id="reels">
+    <div class="reel">
+      <div class="bgtile tile t-palm" style="color:#20241C">
+        <div style="position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.14);left:4%;top:9%"></div>
+        <svg class="garment" style="width:100%;height:66%;opacity:.82;margin-bottom:6%;position:relative;--fsw:1.15"><use href="#fig-a"/></svg>
+        <div class="shine"></div>
+      </div>
+      <span class="tagdot pulse" style="left:48%;top:32%;z-index:4" onclick="openSheet('p1')"></span>
+      <span class="tagdot" style="left:43%;top:58%;z-index:4" onclick="openSheet('p2')"></span>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div class="meta-l">
+        <div class="hnd">@farida.fits <span class="prm">· 164 cm · M · Cairo</span></div>
+        <div class="cap">Trench season بدأ رسمياً 🧥 runs big — خدت S</div>
+        <span class="tchip">#quietluxury</span>
+      </div>
+      <div class="rail-r">
+        <span class="avw" onclick="toast('Профиль автора — витрина и все луки')"><span class="av"></span><span class="fplus">+</span></span>
+        <span class="rbtn saved" data-save data-n="1204" onclick="saveToggle(this)"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">1.2k</i></span>
+        <span class="rbtn" onclick="openComments()"><svg><use href="#i-comment"/></svg>86</span>
+        <span class="rbtn" onclick="openItems('l1')"><svg><use href="#i-tag-f"/></svg>3</span>
+        <span class="rbtn" onclick="toast('Карточка с ценами улетела бы в WhatsApp 📤')"><svg><use href="#i-share"/></svg></span>
+      </div>
+    </div>
+    <div class="reel">
+      <div class="bgtile tile t-ink dk">
+        <svg class="garment" style="width:100%;height:64%;opacity:.85;margin-bottom:5%;--fsw:1.15"><use href="#fig-c"/></svg>
+        <div class="shine"></div>
+      </div>
+      <span class="tagdot" style="left:47%;top:55%;z-index:4" onclick="openSheet('p2')"></span>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div class="meta-l">
+        <div class="hnd">@youssef.arc <span class="prm">· Wekala hunter</span></div>
+        <div class="cap">وسط البلد haul — كله ثريفت، كله شغال 🔥</div>
+        <span class="tchip">#thrift</span>
+      </div>
+      <div class="rail-r">
+        <span class="avw" onclick="toast('Профиль автора')"><span class="av a2"></span><span class="fplus">+</span></span>
+        <span class="rbtn" data-save data-n="356" onclick="saveToggle(this)"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">356</i></span>
+        <span class="rbtn" onclick="openComments()"><svg><use href="#i-comment"/></svg>41</span>
+        <span class="rbtn" onclick="openItems('l2')"><svg><use href="#i-tag-f"/></svg>4</span>
+        <span class="rbtn" onclick="toast('Шеринг в WhatsApp 📤')"><svg><use href="#i-share"/></svg></span>
+      </div>
+    </div>
+    <div class="reel">
+      <div class="bgtile tile t-brick" style="color:#2A1810">
+        <div style="position:absolute;width:92%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.13);left:4%;top:10%"></div>
+        <svg class="garment" style="width:100%;height:66%;opacity:.8;margin-bottom:6%;position:relative;--fsw:1.15"><use href="#fig-b"/></svg>
+        <div class="shine"></div>
+      </div>
+      <span class="tagdot" style="left:52%;top:40%;z-index:4" onclick="openSheet('p8')"></span>
+      <span class="tagdot" style="left:40%;top:74%;z-index:4" onclick="openSheet('p9')"></span>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div class="meta-l">
+        <div class="hnd">@salma.wears <span class="prm">· 158 cm · S</span></div>
+        <div class="cap">Engagement guest, the final answer ✨</div>
+        <span class="tchip">#eid</span>
+      </div>
+      <div class="rail-r">
+        <span class="avw" onclick="toast('Профиль автора')"><span class="av a3"></span><span class="fplus">+</span></span>
+        <span class="rbtn" data-save data-n="418" onclick="saveToggle(this)"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">418</i></span>
+        <span class="rbtn" onclick="openComments()"><svg><use href="#i-comment"/></svg>29</span>
+        <span class="rbtn" onclick="openItems('l3')"><svg><use href="#i-tag-f"/></svg>2</span>
+        <span class="rbtn" onclick="toast('Шеринг в WhatsApp 📤')"><svg><use href="#i-share"/></svg></span>
+      </div>
+    </div>
+    <div class="reel">
+      <div class="bgtile tile t-stone"><svg class="garment" style="width:100%;height:30%;margin-top:52%;--gsw:1.6"><use href="#g-shades"/></svg><div class="shine"></div></div>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div style="position:absolute;left:24px;right:24px;top:22%;z-index:5;color:#fff;text-align:center">
+        <div style="font:700 11px var(--f);letter-spacing:.12em;text-transform:uppercase;opacity:.85;text-shadow:0 1px 6px rgba(0,0,0,.4)">Ask · What is it?</div>
+        <div style="font:800 24px/1.35 var(--f);margin-top:10px;text-shadow:0 2px 10px rgba(0,0,0,.45)" dir="rtl">حد يعرف النضارة دي منين؟</div>
+        <div style="font:500 12.5px var(--f);margin-top:8px;opacity:.9">🙏 seen in Zamalek · 12 answers so far</div>
+        <button class="btn primary" style="margin-top:18px" onclick="push('s-thread')">Add your find</button>
+      </div>
+      <div class="meta-l"><div class="hnd">@nour.thrifts</div></div>
+      <div class="rail-r">
+        <span class="avw" onclick="toast('Профиль автора')"><span class="av a4"></span><span class="fplus">+</span></span>
+        <span class="rbtn" onclick="push('s-thread')"><svg><use href="#i-comment"/></svg>12</span>
+        <span class="rbtn" onclick="toast('Шеринг вопроса — так вопросы находят знатоков')"><svg><use href="#i-share"/></svg></span>
+      </div>
+    </div>
+    <div class="reel">
+      <div class="bgtile tile t-sand" style="color:#3A2E14"><svg class="garment" style="width:100%;height:58%;opacity:.8;--gsw:1.35"><use href="#fig-lay"/></svg><div class="shine"></div></div>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div class="meta-l">
+        <div class="hnd">@nour.thrifts</div>
+        <div class="cap">Eid capsule flat-lay: 5 pieces → 9 looks</div>
+        <span class="tchip">#capsule</span>
+      </div>
+      <div class="rail-r">
+        <span class="avw" onclick="toast('Профиль автора')"><span class="av a4"></span><span class="fplus">+</span></span>
+        <span class="rbtn" data-save data-n="129" onclick="saveToggle(this)"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">129</i></span>
+        <span class="rbtn" onclick="openComments()"><svg><use href="#i-comment"/></svg>9</span>
+        <span class="rbtn" onclick="openItems('l4')"><svg><use href="#i-tag-f"/></svg>5</span>
+        <span class="rbtn" onclick="toast('Шеринг в WhatsApp 📤')"><svg><use href="#i-share"/></svg></span>
+      </div>
+    </div>
   </div>
-  <div class="searchbar" onclick="nav('s-search')"><svg><use href="#i-search"/></svg><span class="q">Try “wide-leg jeans under EGP 800”</span><span class="cam" onclick="event.stopPropagation();toast('Визуальный поиск по фото — v1.1')"><svg><use href="#i-camera"/></svg></span></div>
-  <div class="chips">
-    <span class="chip on">For you</span><span class="chip" onclick="toast('Лента подписок — хронологическая')">Following</span>
-    <span class="chip" onclick="push('s-club')">Thrift</span><span class="chip" onclick="push('s-club')">Minimal</span>
-    <span class="chip" onclick="toast('Клуб Modest — та же схема, что Thrift')">Modest</span><span class="chip" onclick="toast('Клуб Streetwear — та же схема')">Streetwear</span>
+  <div class="feedtop">
+    <span class="fpill on">For you</span>
+    <span class="fpill" onclick="toast('Подписки — строго хронологичная лента')">Following</span>
+    <span class="fbell" onclick="push('s-notifs')"><svg><use href="#i-bell"/></svg></span>
   </div>
-  <div class="scroll"><div class="wf" id="feedWf">
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-blush" style="aspect-ratio:3/4;color:#33200F"><svg class="garment" style="width:74%;opacity:.72"><use href="#fig-a"/></svg><span class="tagmark">3</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">Quiet luxury, Cairo budget edition</div>
-        <div class="meta"><span class="av"></span><span class="nm">farida.fits</span><span class="sp"></span><span class="sv" data-save data-n="1204"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">1.2k</i></span></div></div>
-    </div>
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-ink dk" style="aspect-ratio:4/5"><svg class="garment" style="width:72%;opacity:.78"><use href="#fig-c"/></svg><span class="tagmark">4</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">وسط البلد haul — كله ثريفت</div>
-        <div class="meta"><span class="av a2"></span><span class="nm">youssef.arc</span><span class="sp"></span><span class="sv" data-save data-n="356"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">356</i></span></div></div>
-    </div>
-    <div class="card-l" onclick="push('s-thread')">
-      <div class="tile t-stone" style="aspect-ratio:4/5"><svg class="garment"><use href="#g-shades"/></svg><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">ID these sunnies pls 🙏 seen in Zamalek</div>
-        <div class="meta"><span class="av a4"></span><span class="nm">nour.thrifts</span><span class="sp"></span><span class="sv"><svg><use href="#i-comment"/></svg><i style="font-style:normal">12</i></span></div>
-        <span class="pricechip ghost">help tag it</span></div>
-    </div>
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-palm" style="aspect-ratio:3/4;color:#1F241B"><svg class="garment" style="width:74%;opacity:.72"><use href="#fig-b"/></svg><span class="tagmark">3</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">Engagement guest, final answer</div>
-        <div class="meta"><span class="av a3"></span><span class="nm">salma.wears</span><span class="sp"></span><span class="sv" data-save data-n="418"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">418</i></span></div></div>
-    </div>
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-sand" style="aspect-ratio:4/5;color:#3A2E14"><svg class="garment" style="width:64%;opacity:.72"><use href="#fig-lay"/></svg><span class="tagmark">5</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">Eid capsule flat-lay: 5 pieces, 9 looks</div>
-        <div class="meta"><span class="av a4"></span><span class="nm">nour.thrifts</span><span class="sp"></span><span class="sv" data-save data-n="129"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">129</i></span></div></div>
-    </div>
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-dusk dk" style="aspect-ratio:3/4"><svg class="garment" style="width:74%;opacity:.75"><use href="#fig-a"/></svg><span class="tagmark">2</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">Rainy Alex day — layers that work</div>
-        <div class="meta"><span class="av a2"></span><span class="nm">jana.cairo</span><span class="sp"></span><span class="sv" data-save data-n="264"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">264</i></span></div></div>
-    </div>
-  </div></div>
-  
 </section>
 <!-- ============ POST ============ -->
 <section class="screen stack" id="s-post">
@@ -656,6 +739,13 @@ svg{display:block}
       <div class="hrow" style="padding:10px 16px" onclick="searchGo()"><svg style="width:16px;height:16px;color:var(--faint)"><use href="#i-search"/></svg><span style="font:600 14px var(--f)">wide-leg jeans under 800</span></div>
       <div class="hrow" style="padding:10px 16px" onclick="searchGo()"><svg style="width:16px;height:16px;color:var(--faint)"><use href="#i-search"/></svg><span style="font:600 14px var(--f)">bkam el fostan de 😄</span><span style="flex:1"></span><span style="font:500 10px var(--f);color:var(--faint)">franco ok</span></div>
     </div>
+    <div style="padding:14px 16px 8px;font:800 13px var(--f)">Your clubs</div>
+    <div class="chips" style="padding:0 16px 4px">
+      <span class="chip" onclick="push('s-club')">Thrift · ثريفت</span>
+      <span class="chip" onclick="push('s-club')">Minimal</span>
+      <span class="chip" onclick="toast('Клуб Modest — та же схема')">Modest</span>
+      <span class="chip" onclick="toast('Клуб Cairo — события города')">Cairo</span>
+    </div>
     <div style="padding:14px 16px 8px;font:800 13px var(--f)">Browse</div>
     <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 16px">
       <div class="tile t-palm" style="aspect-ratio:1" onclick="searchGo()"><span style="position:absolute;bottom:8px;left:10px;font:800 12px var(--f);color:#fff">Dresses</span></div>
@@ -808,6 +898,35 @@ svg{display:block}
   </div>
 </div>
 
+<!-- ============ ITEMS SHEET (look products) ============ -->
+<div class="sheetwrap" id="itemsWrap">
+  <div class="scrim" onclick="closeItems()"></div>
+  <div class="sheet">
+    <div class="grab"></div>
+    <div style="font:800 15.5px var(--f);margin-bottom:11px;display:flex;align-items:baseline;gap:8px"><svg style="width:15px;height:15px;color:var(--lapis)"><use href="#i-tag-f"/></svg>Items in this look <span id="itemsN" style="color:var(--faint);font-weight:600;font-size:12px"></span></div>
+    <div id="itemsList" style="display:flex;flex-direction:column;gap:8px;max-height:46vh;overflow-y:auto"></div>
+    <div class="fine">Все цены видны · партнёрские ссылки · покупка у магазина</div>
+  </div>
+</div>
+
+<!-- ============ COMMENTS SHEET ============ -->
+<div class="sheetwrap" id="commentsWrap">
+  <div class="scrim" onclick="closeComments()"></div>
+  <div class="sheet" style="max-height:62%;display:flex;flex-direction:column">
+    <div class="grab"></div>
+    <div style="font:800 15.5px var(--f);margin-bottom:8px">Comments · 86</div>
+    <div style="flex:1;overflow-y:auto;margin:0 -18px;padding:0 2px">
+      <div class="reply"><span class="av a2" style="width:28px;height:28px"></span><div class="rb"><div class="who">malak.ootd <span class="tm">· 1h</span></div>بكام الجاكيت؟ 😍</div></div>
+      <div class="reply" style="padding-left:44px"><span class="av" style="width:28px;height:28px"></span><div class="rb" style="border-color:color-mix(in srgb,var(--lapis) 40%,var(--hairline))"><div class="who">farida.fits <span class="tm">· author</span></div>كل الأسعار على التاجات 🏷 — دوسي على النقطة. Trench — EGP 1,890.</div></div>
+      <div class="reply"><span class="av a4" style="width:28px;height:28px"></span><div class="rb"><div class="who">dina.s <span class="tm">· 40m</span></div>@mariam شوفي دي — ده اللي قولتلك عليه!</div></div>
+      <div class="reply"><span class="av a3" style="width:28px;height:28px"></span><div class="rb"><div class="who">salma.wears <span class="tm">· 12m</span></div>true to size? ولا أطلب أصغر؟</div></div>
+    </div>
+    <div style="display:flex;gap:9px;margin-top:10px;align-items:center">
+      <span class="fld" style="flex:1;height:40px;border-radius:999px;background:var(--surface-2);display:flex;align-items:center;padding:0 14px;font:600 12.5px var(--f);color:var(--faint)" onclick="toast('Комментарий — в проде клавиатура')">Add a comment…</span>
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast"></div>
 </div>
 <script>
@@ -891,6 +1010,20 @@ const PRODUCTS={
   p9:{tile:'tile t-stone',ico:'#g-heel',br:'DEFACTO',pn:'Block heels, 5 cm',pr:'EGP 780',av:'In stock · COD',meta:'«Пережили garden فرح» — 12 отзывов',buy:'Buy at Defacto ↗'},
   p10:{tile:'tile t-dusk dk',ico:'#g-coat',br:'ZARA',pn:'Belted trench — the original',pr:'EGP 2,990',av:'In stock · CityStars',meta:'Выше бюджета вопроса (≤1,500) — ниже 2 похожих в бюджете',buy:'Buy at Zara ↗'}
 };
+const LOOKS={l1:['p1','p2','p3'],l2:['p2','p5','p6','p7'],l3:['p8','p9'],l4:['p1','p2','p3','p8','p9']};
+function openItems(k){
+  const ids=LOOKS[k]||[];
+  $('#itemsN').textContent=ids.length+' · from '+(()=>{const m=Math.min(...ids.map(i=>parseInt(PRODUCTS[i].pr.replace(/\D/g,''),10)));return 'EGP '+m.toLocaleString('en')})();
+  $('#itemsList').innerHTML=ids.map(i=>{const p=PRODUCTS[i];return `
+    <div class="prow-i" onclick="closeItems();openSheet('${i}')">
+      <div class="${p.tile}" style="width:48px;height:56px;border-radius:9px;flex:0 0 auto;display:flex;align-items:center;justify-content:center"><svg class="garment" style="width:52%"><use href="${p.ico}"/></svg></div>
+      <div class="inf"><div class="br">${p.br}</div><div class="pn">${p.pn}</div></div><div class="pp">${p.pr}</div>
+    </div>`}).join('');
+  $('#itemsWrap').classList.add('on');
+}
+function closeItems(){$('#itemsWrap').classList.remove('on');}
+function openComments(){$('#commentsWrap').classList.add('on');}
+function closeComments(){$('#commentsWrap').classList.remove('on');}
 function openSheet(pid){
   const p=PRODUCTS[pid];if(!p)return;
   $('#shTile').className=p.tile;$('#shTile').style.cssText='width:98px;height:116px;border-radius:14px;flex:0 0 auto';
@@ -940,18 +1073,24 @@ function addTag(btn,label,price){
   toast(label+' привязан 🏷');
 }
 function publishPost(){
-  const n=Math.max(tags.length,2);
-  const min=tags.length?Math.min(...tags.map(t=>parseInt(t.price.replace(/\D/g,''),10))):620;
-  $('#feedWf').insertAdjacentHTML('afterbegin',`
-    <div class="card-l" onclick="push('s-post')">
-      <div class="tile t-brick" style="aspect-ratio:3/4;color:#2A1810"><svg class="garment" style="width:72%;opacity:.72"><use href="#fig-c"/></svg><span class="tagmark">${n}</span>
-        <span style="position:absolute;top:8px;left:8px;background:var(--lapis);color:var(--on-lapis);font:800 9px var(--f);letter-spacing:.06em;padding:4px 8px;border-radius:6px">YOUR POST</span><div class="shine"></div></div>
-      <div class="cap"><div class="ttl">Uni fit — كله محلي</div>
-        <div class="meta"><span class="av"></span><span class="nm">farida.fits</span><span class="sp"></span><span class="sv" data-save data-n="0"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">0</i></span></div></div>
+  const n=Math.max(tags.length,1);
+  $('#reels').insertAdjacentHTML('afterbegin',`
+    <div class="reel">
+      <div class="bgtile tile t-brick" style="color:#2A1810"><svg class="garment" style="width:100%;height:64%;opacity:.78;margin-bottom:5%;--fsw:1.15"><use href="#fig-c"/></svg><div class="shine"></div></div>
+      <div class="scrimT"></div><div class="scrimB"></div>
+      <div style="position:absolute;top:calc(max(14px,env(safe-area-inset-top)) + 44px);left:14px;z-index:6"><span style="background:var(--lapis);color:#fff;font:800 10px var(--f);letter-spacing:.07em;padding:5px 10px;border-radius:6px">YOUR POST · FAIR START</span></div>
+      <div class="meta-l"><div class="hnd">@farida.fits <span class="prm">· just now</span></div><div class="cap">Uni fit — كله محلي</div><span class="tchip">#unifits</span></div>
+      <div class="rail-r">
+        <span class="avw"><span class="av"></span></span>
+        <span class="rbtn" data-save data-n="0" onclick="saveToggle(this)"><svg><use href="#i-bookmark"/></svg><i style="font-style:normal">0</i></span>
+        <span class="rbtn" onclick="openComments()"><svg><use href="#i-comment"/></svg>0</span>
+        <span class="rbtn" onclick="openItems('l1')"><svg><use href="#i-tag-f"/></svg>${n}</span>
+        <span class="rbtn" onclick="toast('Шеринг в WhatsApp 📤')"><svg><use href="#i-share"/></svg></span>
+      </div>
     </div>`);
   go('s-createdone');
 }
-function viewMyPost(){nav('s-feed');$('#s-feed .scroll').scrollTop=0;toast('Fair start: пост показывается заинтересованным ✨');}
+function viewMyPost(){nav('s-feed');$('#reels').scrollTop=0;toast('Fair start: первые ~300 показов гарантированы ✨');}
 
 /* ---------- search ---------- */
 function searchGo(){$('#searchQ').textContent='eid look';$('#searchIdle').style.display='none';$('#searchRes').style.display='';$('#searchCancel').style.display='';if(cur!=='s-search')nav('s-search');}
