@@ -106,15 +106,15 @@ svg{display:block}
 .pricechip{display:inline-flex;align-items:center;background:var(--ink);color:var(--bg);font:700 11px var(--f);letter-spacing:.02em;padding:5.5px 10px 5.5px 17px;margin-top:8px;clip-path:polygon(9px 0,100% 0,100% 100%,9px 100%,0 50%);-webkit-mask:radial-gradient(circle 2.6px at 8px 50%,transparent 2.5px,#000 2.7px);mask:radial-gradient(circle 2.6px at 8px 50%,transparent 2.5px,#000 2.7px)}
 .pricechip.ghost{background:var(--surface-2);color:var(--ink-2);outline:1px dashed var(--faint);outline-offset:-1px}
 .pricechip.lp{background:var(--lapis);color:var(--on-lapis)}
-.tagmark{position:absolute;top:8px;right:8px;height:22px;display:inline-flex;align-items:center;gap:4px;padding:0 8px 0 13px;background:rgba(251,250,246,.92);color:#151412;font:700 10.5px var(--f);backdrop-filter:blur(4px);clip-path:polygon(8px 0,100% 0,100% 100%,8px 100%,0 50%);-webkit-mask:radial-gradient(circle 2.2px at 7px 50%,transparent 2.1px,#000 2.3px);mask:radial-gradient(circle 2.2px at 7px 50%,transparent 2.1px,#000 2.3px)}
+.tagmark{position:absolute;top:8px;right:8px;height:22px;display:inline-flex;align-items:center;gap:4px;padding:0 8px 0 13px;background:rgba(251,250,246,.92);color:#151412;font:700 10.5px var(--f);-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);clip-path:polygon(8px 0,100% 0,100% 100%,8px 100%,0 50%);-webkit-mask:radial-gradient(circle 2.2px at 7px 50%,transparent 2.1px,#000 2.3px);mask:radial-gradient(circle 2.2px at 7px 50%,transparent 2.1px,#000 2.3px)}
 [data-theme="dark"] .tagmark{background:rgba(18,18,20,.85);color:#EFEDE5}
 
 /* tag dots & pills */
-.tagdot{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;cursor:pointer;backdrop-filter:blur(2px)}
+.tagdot{position:absolute;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.32);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
 .tagdot::after{content:"";width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.35)}
 .tagdot.pulse{animation:pulse 1.6s var(--ease) 2}
 @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(255,255,255,.55)}70%{box-shadow:0 0 0 14px rgba(255,255,255,0)}100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}}
-.tagpill{position:absolute;display:flex;align-items:center;gap:7px;background:rgba(14,14,17,.9);color:#F4F2EC;padding:8px 12px 8px 19px;font:600 12px var(--f);backdrop-filter:blur(6px);white-space:nowrap;clip-path:polygon(11px 0,100% 0,100% 100%,11px 100%,0 50%);-webkit-mask:radial-gradient(circle 2.8px at 9px 50%,transparent 2.7px,#000 2.9px);mask:radial-gradient(circle 2.8px at 9px 50%,transparent 2.7px,#000 2.9px);cursor:pointer}
+.tagpill{position:absolute;display:flex;align-items:center;gap:7px;background:rgba(14,14,17,.9);color:#F4F2EC;padding:8px 12px 8px 19px;font:600 12px var(--f);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);white-space:nowrap;clip-path:polygon(11px 0,100% 0,100% 100%,11px 100%,0 50%);-webkit-mask:radial-gradient(circle 2.8px at 9px 50%,transparent 2.7px,#000 2.9px);mask:radial-gradient(circle 2.8px at 9px 50%,transparent 2.7px,#000 2.9px);cursor:pointer}
 .tagpill .pr{color:#9DAEFF;font-weight:800}
 
 /* buttons */
@@ -128,7 +128,7 @@ svg{display:block}
 .btn[data-on="1"]{background:var(--surface-2);color:var(--ink-2);border-color:var(--surface-2)}
 
 /* tab bar */
-.tabbar{position:absolute;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(18px);border-top:1px solid var(--hairline);display:flex;align-items:flex-start;justify-content:space-around;padding:9px 10px calc(10px + env(safe-area-inset-bottom));z-index:30}
+.tabbar{position:absolute;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 88%,transparent);-webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);border-top:1px solid var(--hairline);display:flex;align-items:flex-start;justify-content:space-around;padding:9px 10px calc(10px + env(safe-area-inset-bottom));z-index:30}
 .tabbar .tb{display:flex;flex-direction:column;align-items:center;gap:3px;color:var(--faint);font:600 10px var(--f);width:60px;position:relative}
 .tabbar .tb svg{width:24px;height:24px}
 .tabbar .tb.on{color:var(--ink)}
@@ -180,7 +180,7 @@ svg{display:block}
 .reply .who .tm{color:var(--faint);font-weight:500}
 
 /* bottom input bar */
-.inputbar{position:absolute;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px);border-top:1px solid var(--hairline);display:flex;align-items:center;gap:10px;padding:10px 16px calc(12px + env(safe-area-inset-bottom));z-index:25}
+.inputbar{position:absolute;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--bg) 90%,transparent);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-top:1px solid var(--hairline);display:flex;align-items:center;gap:10px;padding:10px 16px calc(12px + env(safe-area-inset-bottom));z-index:25}
 .inputbar .fld{flex:1;height:40px;border-radius:999px;background:var(--surface-2);display:flex;align-items:center;padding:0 14px;font:600 12.5px var(--f);color:var(--faint)}
 .inputbar .act{display:inline-flex;align-items:center;gap:5px;font:800 13px var(--f);color:var(--ink)}
 .inputbar .act svg{width:22px;height:22px;transition:transform .24s var(--spring)}
@@ -379,13 +379,13 @@ svg{display:block}
       <div class="tile t-palm" style="flex:0 0 100%;aspect-ratio:4/4.4;border-radius:0;scroll-snap-align:center;color:#20241C">
         <div style="position:absolute;width:72%;aspect-ratio:1;border-radius:50%;background:rgba(255,255,255,.15);left:14%;top:8%"></div>
         <div style="position:absolute;left:27%;right:27%;bottom:10.5%;height:2.5px;background:rgba(20,25,18,.22);border-radius:2px"></div>
-        <svg class="garment" style="height:82%;width:auto;opacity:.78;position:relative"><use href="#fig-a"/></svg><div class="shine"></div>
+        <svg class="garment" style="width:54%;height:auto;opacity:.78;position:relative"><use href="#fig-a"/></svg><div class="shine"></div>
         <span class="tagdot pulse" style="left:49%;top:32%" onclick="openSheet('p1')"></span>
         <span class="tagdot" style="left:44%;top:65%" onclick="openSheet('p2')"></span>
         <span class="tagdot" style="right:26%;top:47%" onclick="openSheet('p3')"></span>
         <span class="tagpill" style="left:12%;top:22%" onclick="openSheet('p1')">Opio · Belted trench <span class="pr">EGP 1,890</span></span>
       </div>
-      <div class="tile t-ink dk" style="flex:0 0 100%;aspect-ratio:4/4.4;border-radius:0;scroll-snap-align:center"><svg class="garment" style="height:78%;width:auto;opacity:.78"><use href="#fig-c"/></svg><div class="shine"></div><span class="tagdot" style="left:46%;top:58%" onclick="openSheet('p2')"></span></div>
+      <div class="tile t-ink dk" style="flex:0 0 100%;aspect-ratio:4/4.4;border-radius:0;scroll-snap-align:center"><svg class="garment" style="width:50%;height:auto;opacity:.78"><use href="#fig-c"/></svg><div class="shine"></div><span class="tagdot" style="left:46%;top:58%" onclick="openSheet('p2')"></span></div>
       <div class="tile t-blush" style="flex:0 0 100%;aspect-ratio:4/4.4;border-radius:0;scroll-snap-align:center"><svg class="garment" style="width:44%"><use href="#g-coat"/></svg><div class="shine"></div><span class="tagdot" style="left:52%;top:40%" onclick="openSheet('p1')"></span></div>
     </div>
     <div style="display:flex;gap:5px;justify-content:center;padding:10px 0 2px" id="caroDots"><i style="width:16px;height:6px;border-radius:4px;background:var(--ink)"></i><i style="width:6px;height:6px;border-radius:50%;background:var(--faint)"></i><i style="width:6px;height:6px;border-radius:50%;background:var(--faint)"></i></div>
@@ -417,13 +417,13 @@ svg{display:block}
 <!-- ============ ASKS ============ -->
 <section class="screen" id="s-asks">
   <div class="hrow top-safe"><span class="ttl">Asks</span><span style="flex:1"></span><span class="iconb" onclick="toast('Фильтры: бюджет, размер, город')"><svg><use href="#i-filter"/></svg></span></div>
-  <div class="chips"><span class="chip on">Find it</span><span class="chip" onclick="toast('«Оцени лук» — опросы A/B, v1.1')">Rate my look</span><span class="chip" onclick="toast('«Как стилизовать» — v1.1')">How to style</span></div>
+  <div class="chips"><span class="chip on">Similar for less</span><span class="chip" onclick="toast('«Что это и откуда?» — опознание вещи по фото (вопрос про очки — этот тип)')">What is it?</span><span class="chip" onclick="toast('«Оцени лук» — опросы A/B, v1.1')">Rate my look</span><span class="chip" onclick="toast('«Как стилизовать» — v1.1')">How to style</span></div>
   <div class="scroll">
     <div class="qcard" onclick="push('s-thread')">
       <div class="arow"><span class="av a2" style="width:30px;height:30px"></span>jana.cairo <span class="tm">· 2h</span><span style="flex:1"></span><span class="chip set" style="height:25px;font-size:10.5px">2 found</span></div>
-      <div class="qtxt">عايزة زيها — this belted trench under EGP 1,500 🙏</div>
+      <div class="qtxt">عايزة زيها بس أرخص — similar to this trench, my budget EGP 1,500 🙏</div>
       <div class="tile t-dusk dk" style="height:130px;margin-top:10px;border:1.5px dashed rgba(255,255,255,.4)"><svg class="garment" style="width:34%;opacity:.8"><use href="#fig-a"/></svg></div>
-      <div class="qstats"><span class="chip">12 answers</span><span class="chip set">budget EGP 1,500</span></div>
+      <div class="qstats"><span class="chip">12 answers</span><span class="chip set">budget ≤ EGP 1,500</span><span class="chip" style="color:var(--success)">2 in budget</span></div>
     </div>
     <div class="qcard" onclick="toast('Тот же флоу треда — открой первый вопрос')">
       <div class="arow"><span class="av a4" style="width:30px;height:30px"></span>nour.thrifts <span class="tm">· 4h</span></div>
@@ -446,9 +446,20 @@ svg{display:block}
   <div class="scroll">
     <div class="qcard" style="cursor:default">
       <div class="arow"><span class="av a2" style="width:30px;height:30px"></span>jana.cairo <span class="tm">· 2h</span></div>
-      <div class="qtxt">عايزة زيها — this belted trench under EGP 1,500 🙏</div>
+      <div class="qtxt">عايزة زيها بس أرخص — similar to this trench, my budget EGP 1,500 🙏</div>
       <div class="tile t-dusk dk" style="height:150px;margin-top:10px;border:1.5px dashed rgba(255,255,255,.4)"><svg class="garment" style="width:38%;opacity:.8"><use href="#fig-a"/></svg></div>
-      <div class="qstats"><span class="chip set">budget EGP 1,500</span><span class="chip">size S–M</span></div>
+      <div class="qstats"><span class="chip set">budget ≤ EGP 1,500</span><span class="chip">size S–M</span></div>
+    </div>
+    <div class="acard" style="border-style:dashed;cursor:pointer" onclick="openSheet('p10')">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="tile t-dusk dk" style="width:40px;height:46px;border-radius:8px;flex:0 0 auto"><svg class="garment" style="width:56%"><use href="#g-coat"/></svg></div>
+        <div style="flex:1;min-width:0">
+          <div style="font:700 10px var(--f);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)">The original · attached by author</div>
+          <div style="font:600 13px var(--f);margin-top:2px">ZARA · Belted trench — EGP 2,990</div>
+        </div>
+        <span class="chip" style="height:26px;font-size:10.5px;color:var(--error);border-color:color-mix(in srgb,var(--error) 45%,var(--hairline))">over budget</span>
+      </div>
+      <div style="font:500 10.5px var(--f);color:var(--faint);margin-top:7px">Original is over her budget — answers below hunt similars from other brands ↓</div>
     </div>
     <div class="acard best">
       <div class="arow"><span class="av a3" style="width:26px;height:26px"></span>salma.wears <span class="tm">· 1h</span><span style="flex:1"></span><span class="bestbdg"><svg width="11" height="11"><use href="#i-check"/></svg> Author’s pick</span></div>
@@ -459,7 +470,7 @@ svg{display:block}
         </div>
         <span class="votebtn" data-n="41" onclick="vote(this)"><svg><use href="#i-up"/></svg><i style="font-style:normal">41</i></span>
       </div>
-      <div style="display:flex;gap:8px;margin-top:9px;align-items:center;flex-wrap:wrap"><span class="chip" style="height:25px;font-size:10.5px;gap:5px"><svg width="11" height="11" style="color:var(--lapis)"><use href="#i-tag-f"/></svg>Top Finder · 23 finds</span><span style="font:500 10.5px var(--f);color:var(--ink-2)">jana.cairo bought this ✓</span></div>
+      <div style="display:flex;gap:8px;margin-top:9px;align-items:center;flex-wrap:wrap"><span class="chip" style="height:25px;font-size:10.5px;color:var(--success);border-color:color-mix(in srgb,var(--success) 45%,var(--hairline))">similar · in budget ✓</span><span class="chip" style="height:25px;font-size:10.5px;gap:5px"><svg width="11" height="11" style="color:var(--lapis)"><use href="#i-tag-f"/></svg>Top Finder · 23 finds</span><span style="font:500 10.5px var(--f);color:var(--ink-2)">jana.cairo bought this ✓</span></div>
     </div>
     <div class="acard">
       <div class="arow"><span class="av a2" style="width:26px;height:26px"></span>youssef.arc <span class="tm">· 44m</span></div>
@@ -471,8 +482,9 @@ svg{display:block}
         </div>
         <span class="votebtn" data-n="12" onclick="vote(this)"><svg><use href="#i-up"/></svg><i style="font-style:normal">12</i></span>
       </div>
+      <div style="margin-top:8px"><span class="chip" style="height:24px;font-size:10.5px;color:var(--success);border-color:color-mix(in srgb,var(--success) 45%,var(--hairline))">similar · in budget ✓</span></div>
     </div>
-    <div class="note-line">+10 ответов · sorted by votes</div>
+    <div class="note-line">+10 ответов · sorted by votes · ответы вне бюджета помечаются и опускаются вниз</div>
   </div>
   <div class="inputbar">
     <span class="fld" onclick="toast('Прикрепи вещь: каталог / ссылка / фото')">Add your find…</span>
@@ -506,7 +518,7 @@ svg{display:block}
   <div class="steps"><span class="st-i done"><span class="b">✓</span>Photos</span><span class="ln"></span><span class="st-i on"><span class="b">2</span>Tags</span><span class="ln"></span><span class="st-i"><span class="b">3</span>Details</span></div>
   <div class="scroll nofoot" style="padding-bottom:120px">
     <div class="tile t-brick" id="tagCanvas" style="height:300px;margin:0 16px;border-radius:10px;color:#2A1810;cursor:crosshair" onclick="placeDot(event)">
-      <svg class="garment" style="height:86%;width:auto;opacity:.72"><use href="#fig-c"/></svg><div class="shine"></div>
+      <svg class="garment" style="width:40%;height:auto;opacity:.72"><use href="#fig-c"/></svg><div class="shine"></div>
     </div>
     <div class="note-line" id="tagHint">Тапни по фото там, где вещь — поставится точка</div>
     <div class="seg"><span class="sg on" onclick="toast('Каталог: фиды магазинов-партнёров')">Catalog</span><span class="sg" onclick="toast('Вставь любую ссылку — распознаем название и цену')">Paste link</span><span class="sg" onclick="toast('Не знаешь, откуда вещь? Комьюнити поможет отметить')">Ask community</span></div>
@@ -881,7 +893,8 @@ const PRODUCTS={
   p6:{tile:'tile t-ink dk',ico:'#g-coat',br:'ZARA',pn:'Faux leather jacket',pr:'EGP 2,990',av:'In stock · CityStars',meta:'PU-кожа · комьюнити: 3.8★ на износ',buy:'Buy at Zara ↗'},
   p7:{tile:'tile t-dusk dk',ico:'#g-coat',br:'UNTY · LOCAL',pn:'Leather jacket, oversized',pr:'EGP 2,450',av:'In stock · COD',meta:'Настоящая кожа · 4.8★ · привязано к треду',buy:'Buy at UNTY ↗'},
   p8:{tile:'tile t-blush',ico:'#g-dress',br:'OPIO',pn:'Satin midi dress',pr:'EGP 1,450',av:'In stock · COD',meta:'Самое сохраняемое Eid-платье недели',buy:'Buy at Opio ↗'},
-  p9:{tile:'tile t-stone',ico:'#g-heel',br:'DEFACTO',pn:'Block heels, 5 cm',pr:'EGP 780',av:'In stock · COD',meta:'«Пережили garden فرح» — 12 отзывов',buy:'Buy at Defacto ↗'}
+  p9:{tile:'tile t-stone',ico:'#g-heel',br:'DEFACTO',pn:'Block heels, 5 cm',pr:'EGP 780',av:'In stock · COD',meta:'«Пережили garden فرح» — 12 отзывов',buy:'Buy at Defacto ↗'},
+  p10:{tile:'tile t-dusk dk',ico:'#g-coat',br:'ZARA',pn:'Belted trench — the original',pr:'EGP 2,990',av:'In stock · CityStars',meta:'Выше бюджета вопроса (≤1,500) — ниже 2 похожих в бюджете',buy:'Buy at Zara ↗'}
 };
 function openSheet(pid){
   const p=PRODUCTS[pid];if(!p)return;
